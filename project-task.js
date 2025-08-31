@@ -49,7 +49,8 @@ function getAdoptionFee(animalName) {
 // Main program
 console.log("Welcome to the Pet Shelter System");
 while (true) {
-    let action = readlineSync.question("Choose an action: 'add', 'fee', or 'exit': ").toLowerCase();
+    try {
+        let action = readlineSync.question("Choose an action: 'add', 'fee', or 'exit': ").toLowerCase();
     if (action === "exit") {
         console.log("Goodbye!");
         break;
@@ -65,6 +66,9 @@ while (true) {
     } else {
         console.log("Invalid action. Please choose 'add', 'fee', or 'exit'.");
     }
+    } catch (err){
+        console.error(err.message);
+    }    
 }
 
 
@@ -74,11 +78,17 @@ Problems to Solve
 
 Invalid Input Errors:
   What happens if the user provides a negative adoption fee or leaves the name blank?
+
+  The error "Invalid animal name or adoption fee!" is thrown the the program stops.
+
   What happens if the user tries to find the fee for an animal that hasn’t been added?
+The error "Animal not found in records!" is thrown and the program stops
 
 Code Flow Problems:
   What happens if the program throws an exception? Does the rest of the code continue running?
+  if the program throws an exception the program stops running
 
 Structured Exception Handling:
   Add try/catch blocks to handle the above errors gracefully.
 */
+
